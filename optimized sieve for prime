@@ -1,0 +1,34 @@
+// optimize sieve of eratosthenes for counting total no. of prime in an given array
+// optimization 1: inner loop -> j=j*2 is replaced with j=i*i;
+// optimization 2: outter loop ->i<=N is replaced with i*i <= n i.e sqrt(n)
+// T.C : nlog(log n)
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<bool>Sieve(int n){
+  vector<bool>sieve(n+1, true);
+  sieve[0] = sieve[1] = false;
+
+  for(int i = 2; i*i<= n; i++ ){
+   int j = i*i;
+   while(sieve[j] == true){
+    sieve[j] = false;
+    j += i;
+   }
+ }
+ return sieve;
+}
+
+int main() {
+  vector<bool>sieve = Sieve(25);
+
+  for(int i=0; i<=25; i++){
+    if(sieve[i] == true){
+      cout << i << " ";
+    }
+  }
+  
+  return 0;
+}
