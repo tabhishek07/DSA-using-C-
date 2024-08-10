@@ -1,0 +1,28 @@
+// learning pointer from scratch
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a = 10;
+  cout << a << endl;
+  cout << "Address of a : "<<&a << endl;
+
+  // creation of pointer
+
+  int *ptr = &a;
+  // accessing the value stored at the address stored in ptr
+
+  cout<< "Accessing the value stored at the address stored in ptr : "<< *ptr << endl;
+
+  // accessint the value stored in ptr -> it will be address of a obviusly
+
+  cout<< "Value in ptr :" << ptr << endl;
+
+  // check the address of ptr
+
+  cout<< "Address of ptr itself : "<< &ptr << endl;
+
+
+  return 0;
+}
