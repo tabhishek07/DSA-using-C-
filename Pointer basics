@@ -26,3 +26,21 @@ int main() {
 
   return 0;
 }
+
+
+
+// code for checking size of array inside function ,, so that we can verify it is pointer of 8 byte
+
+#include <iostream>
+using namespace std;
+
+void solve (int arr[] , int size){
+    cout<<"Size of array inside solve function : "<< sizeof(arr)<<endl;
+  }
+
+int main() {
+  int arr[] = {1,2,3,4,5};
+  cout<<"size of array : "<<sizeof(arr)<<endl;
+  solve(arr,4);
+  return 0;
+}
