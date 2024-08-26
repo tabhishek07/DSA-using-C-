@@ -1,0 +1,36 @@
+notice while condition always start<=end not >=
+
+
+
+#include<iostream>
+using namespace std;
+
+void reverseArray(int arr[], int size){
+int start = 0;
+int end = size-1;
+  while(start<=end){
+    swap(arr[start], arr[end]);
+    start++;
+    end--;
+  }
+  cout<<"Reversed Array"<<endl;
+  for(int i = 0; i< size; i++){
+    cout<< arr[i]<<" ";
+  }
+}
+
+int main(){
+
+  int arr[] = {1,2,3,4,5,6,7,8,9,10};
+  int size = sizeof(arr)/sizeof(arr[0]);
+
+  cout<<"Noramal Array:"<<endl;
+  for(int i = 0; i< size; i++){
+    cout<< arr[i]<<" ";
+  }
+  cout<<endl;
+  reverseArray(arr, size);
+
+ 
+  return 0;
+}
