@@ -1,0 +1,60 @@
+// blood donate
+// cond 1 age >=18
+// cond 2 weight >=60
+// if not eligible give reason
+// using nested if else
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int age, weight;
+    cout<<"Enter your age :"<<" ";
+    cin>>age;
+    cout<<endl;
+  
+    cout<<"Enter your weight :"<< " ";
+    cin>>weight;
+    cout<<endl;
+    if(age>=18){
+        if(weight>=60){
+            cout<<"Congrats! you can donate"<<endl;
+            return 0;
+            
+        }
+        cout<<"you are below weight"<<endl;
+        return 0;
+    }
+    if(weight>=60){
+        cout<<"you are under age"<<endl;
+    }else{
+        cout<<"you are both under weight and age"<<endl;
+    }
+    return 0;
+    
+}
+
+// check for prime
+
+// no. primem or not
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int num ;
+    cout<<"Enter your number : "<<"" ;
+    cin>>num;
+    if(num==0 or num == 1){
+        cout<<"prime";
+        return 0;
+    }
+    for(int i = 2; i<num/2; i++ ){
+        if(num%i == 0){
+            cout<<"Not a Prime"<<endl;
+            return 0;
+        }
+    }
+    cout<<"Prime";
+    return 0;
+}
