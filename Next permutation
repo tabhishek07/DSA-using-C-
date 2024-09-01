@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        // next_permutation is a STL library we can use it directly but below is its working 
+
+        // next_permutation(nums.begin(), nums.end());
+
+        // step one
+
+        // find the break point
+        int n = nums.size();
+        int idx = -1;
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                idx = i;
+                break;
+            }
+        }
+
+        if (idx != -1) {
+            // next swapping
+            for (int i = n - 1; i > idx; i--) {
+                if (nums[i] > nums[idx]) {
+                    swap(nums[i], nums[idx]);
+                    break;
+                }
+            }
+
+            // reverse the remaining number after break point 
+
+            reverse(nums.begin() + 1 + idx, nums.end());
+
+        }else{
+            reverse(nums.begin() , nums.end());
+        }
+    }
+};
