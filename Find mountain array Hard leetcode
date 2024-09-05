@@ -1,0 +1,74 @@
+
+/**
+ * // This is the MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * class MountainArray {
+ *   public:
+ *     int get(int index);
+ *     int length();
+ * };
+ */
+
+class Solution {
+public:
+    // Binary search in the ascending part of the array
+    int bsAsc(int target, MountainArray& mountainArr, int s, int e) {
+        while (s <= e) {
+            int mid = s + (e - s) / 2;
+            int midVal = mountainArr.get(mid);
+
+            if (midVal == target) {
+                return mid;
+            } else if (midVal < target) {
+                s = mid + 1;
+            } else {
+                e = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    // Binary search in the descending part of the array
+    int bsDesc(int target, MountainArray& mountainArr, int s, int e) {
+        while (s <= e) {
+            int mid = s + (e - s) / 2;
+            int midVal = mountainArr.get(mid);
+
+            if (midVal == target) {
+                return mid;
+            } else if (midVal < target) {
+                e = mid - 1;
+            } else {
+                s = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    int findInMountainArray(int target, MountainArray& mountainArr) {
+        int s = 0;
+        int e = mountainArr.length() - 1;
+
+        // Finding the peak element index
+        while (s < e) {
+            int m = s + (e - s) / 2;
+            if (mountainArr.get(m) < mountainArr.get(m + 1)) {
+                s = m + 1;
+            } else {
+                e = m;
+            }
+        }
+
+        int peakIdx = s;
+
+        // Try to find the target in the ascending part
+        int ans = bsAsc(target, mountainArr, 0, peakIdx);
+        if (ans != -1) {
+            return ans;
+        }
+
+        // If not found, try to find the target in the descending part
+        return bsDesc(target, mountainArr, peakIdx + 1,
+                      mountainArr.length() - 1);
+    }
+};
