@@ -1,0 +1,45 @@
+
+#include <iostream>
+using namespace std;
+int findOddOccuring(int arr[], int size){
+    int s = 0;
+    int e = size - 1;
+    int mid = s + (e-s)/2;
+    
+    while(s<=e){
+        if(s == e){
+            return s;
+        }
+       if(mid & 1){//odd check mid&1
+           if(mid - 1 >=0 && arr[mid] == arr[mid -1]){
+               s = mid + 1;
+           }
+           else{
+               e = mid -1;
+           }
+       }
+       else{ // even wala case
+           if(mid + 1 < size -1 && arr[mid] == arr[mid + 1]){
+               // left me ho ans k 
+               // move right 
+               s = mid + 2;
+           }
+           else{
+               e = mid;  // not mid -1 coz ans may lost in case of single element 
+           }
+       }
+       mid = s + (e-s)/2;
+    }
+    return -1;
+}
+
+int main() {
+   int arr[] = {1,10,10,2,2,4,4,9,9,19,19};
+   int size = sizeof(arr)/sizeof(arr[0]);
+   
+   int oddNum = findOddOccuring(arr, size);
+   
+   cout<<"the odd occuring element is :"<<arr[oddNum]<<endl;
+
+    return 0;
+}
